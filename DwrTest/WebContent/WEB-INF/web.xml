@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>DwrTest</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 配置dwrServelet -->
+  <servlet>
+  	<servlet-name>dwr</servlet-name>
+  	<servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+  	<!-- 开启debug模式 -->
+  	<init-param>
+      <param-name>debug</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  	<!-- 使用服务器反推技术(逆Ajax) -->
+  	<init-param>
+  		<param-name>activeReverseAjaxEnabled</param-name>
+  		<param-value>true</param-value>
+  	</init-param>
+  	<!-- 能够从其他域进行请求 -->
+  	<init-param>
+  		<param-name>crossDomainSessoionSecurity</param-name>
+  		<param-value>false</param-value>
+  	</init-param>
+  	<!-- 允许远程js -->
+  	<init-param>
+  		<param-name>allowScriptTagRemoting</param-name>
+  		<param-value>true</param-value>
+  	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>dwr</servlet-name>
+  	<!-- 此路径决定dwr engin.js util.js的路径 -->
+  	<url-pattern>/js/dwr/*</url-pattern>
+  </servlet-mapping>
+</web-app>
